@@ -59,13 +59,8 @@ int sumSeries(int *series, int n){
     int sum = 0;
     int last, lastBefore;
 
-    for (int i=2;i<n;i++){
+    for (int i=2;i<n+1;i++){
         sum += series[i];
-        if (i == n-1)
-            last = series[i];
-        if (i == n-2)
-            lastBefore = series[i];
-
     }
     sum += (last + lastBefore);
 
