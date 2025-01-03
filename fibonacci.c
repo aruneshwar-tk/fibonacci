@@ -57,10 +57,17 @@ int sumSeries(int *series, int n){
     //n = size of the series
 
     int sum = 0;
+    int last, lastBefore;
 
     for (int i=2;i<n;i++){
         sum += series[i];
+        if (i == n-1)
+            last = series[i];
+        if (i == n-2)
+            lastBefore = series[i];
+
     }
+    sum += (last + lastBefore);
 
     return sum;
 }
