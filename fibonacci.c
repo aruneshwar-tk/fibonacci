@@ -65,6 +65,11 @@ int sumSeries(int *series, int n){
     return sum;
 }
 
+int nthelement(int* series){
+    int n = sizeof(series)/sizeof(series[0]);
+    return series[n-1];
+}
+
 int main(){
     int n;
     int bugSum;
@@ -93,4 +98,5 @@ int main(){
     bugSum = sumSeries(terms, n);
     printf("Bugsum of the series - %d", bugSum);
     
+    printf("nth element is %d", nthelement(terms) );
 }
