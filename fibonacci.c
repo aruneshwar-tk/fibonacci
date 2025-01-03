@@ -25,18 +25,31 @@ int* generateFibonacciSeries(int n){
     return series;
 }
 
-int* get_even_num(int series[], int size){
+int* getEvenNumbers(int series[], int size, int *evenSize) {
     int* evenSeries = (int*)malloc(size * sizeof(int));
     int j = 0;
-    for(int i =1; i<size; i++){
-        if(series[i]%2==0){
-            evenSeries[j++]=series[i];
+    for(int i = 0; i < size; i++) {
+        if(series[i] % 2 == 0) {
+            evenSeries[j++] = series[i];
         }
     }
+    *evenSize = j;  // Store the size of the even series
     return evenSeries;
 }
 
-int bugSumSeries(int *series, int n){
+int* getOddNumbers(int series[], int size, int *oddSize) {
+    int* oddSeries = (int*)malloc(size * sizeof(int));
+    int j = 0;
+    for(int i = 0; i < size; i++) {
+        if(series[i] % 2 != 0) {
+            oddSeries[j++] = series[i];
+        }
+    }
+    *oddSize = j;  // Store the size of the odd series
+    return oddSeries;
+}
+
+int sumSeries(int *series, int n){
     /*A function to return the bug sum of the 
     series - always 1 less than the expected sum*/
 
@@ -61,13 +74,23 @@ int main(){
     for (int i=0;i<n;i++){
         printf("%d\n", terms[i]);
     }
-    int *eveterms = get_even_num(terms,n);
-    int sizeEven = sizeof(eveterms) / sizeof(int);
-    for (int i=0;i<sizeEven;i++){
-        printf("%d\n", eveterms[i]);
-    }
+    int evenSize, oddSize;
 
-    bugSum = bugSumSeries(terms, n);
+    int* evenSeries = getEvenNumbers(terms, n, &evenSize);
+    printf("Even Numbers: ");
+    for (int i = 1; i < evenSize; i++) {
+        printf("%d ", evenSeries[i]);
+    }
+    printf("\n");
+
+    int* oddSeries = getOddNumbers(terms, n, &oddSize);
+    printf("Odd Numbers: ");
+    for (int i = 0; i < oddSize; i++) {
+        printf("%d ", oddSeries[i]);
+    }
+    printf("\n");
+
+    bugSum = sumSeries(terms, n);
     printf("Bugsum of the series - %d", bugSum);
     
 }
