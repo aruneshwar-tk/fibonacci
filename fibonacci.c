@@ -56,17 +56,13 @@ int sumSeries(int *series, int n){
     //args = series (array containing the terms)
     //n = size of the series
 
-    int bugSum = 0;
+    int sum = 0;
 
-    for (int i=0;i<n;i++){
-        bugSum += series[i];
-        if (i == n-1)
-            lastTerm = series[i];
-        if (i == n-2)
-            lastBeforeTerm = series[i];
+    for (int i=2;i<n;i++){
+        sum += series[i];
     }
-    bugSum += (lastTerm + lastBeforeTerm);
-    return bugSum;
+
+    return sum;
 }
 
 int main(){
