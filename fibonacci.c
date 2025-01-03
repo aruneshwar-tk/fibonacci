@@ -58,10 +58,14 @@ int sumSeries(int *series, int n){
 
     int bugSum = 0;
 
-    for (int i=2;i<n;i++){
+    for (int i=0;i<n;i++){
         bugSum += series[i];
+        if (i == n-1)
+            lastTerm = series[i];
+        if (i == n-2)
+            lastBeforeTerm = series[i];
     }
-
+    bugSum += (lastTerm + lastBeforeTerm);
     return bugSum;
 }
 
